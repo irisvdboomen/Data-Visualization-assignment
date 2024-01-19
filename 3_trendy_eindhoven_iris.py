@@ -8,7 +8,7 @@ import numpy as np
 # Loading gender and age data
 @st.cache_data
 def load_gender_age_data():
-    df = pd.read_csv('test/dataset-iris-part-1.csv')
+    df = pd.read_csv('datasets/dataset-iris-part-1.csv')
 
     # Splitting the column names into separate columns for 'Category' and 'Year'
     df_melted = df.melt(id_vars=['NbName', 'DistrictId', 'DistrictName'], var_name='CategoryYear', value_name='Population')
@@ -25,7 +25,7 @@ def load_gender_age_data():
 
 # Loading population pyramid data
 def pyramid_data():
-    df_pyramid = pd.read_csv('test/dataset-iris-part-2.csv', sep=';', encoding='utf-8')
+    df_pyramid = pd.read_csv('datasets/dataset-iris-part-2.csv', sep=';', encoding='utf-8')
     return df_pyramid
 
 # This function plots the population of gender over time for the selected neighborhoods
@@ -51,7 +51,7 @@ def select_and_plot_all_genders(df):
     # Filtering data for selected neighborhoods
     filtered_data = df[(df['NbName'] == selected_neighborhood) & (df['Category'].isin(['Mannen', 'Vrouwen']))]
     # Creating the custom colors for the plot
-    custom_colors = {'Mannen': '#CC112F', 'Vrouwen': '#11CCAE'}
+    custom_colors = {'Mannen': '#CC112F', 'Vrouwen': '#117acc'}
     
     # Scatter plot with trend lines to visualize trends
     fig = px.scatter(filtered_data, x='Year', y='Population', color='Category', facet_col='NbName', trendline='ols',        
@@ -138,7 +138,7 @@ def population_pyramid(df):
         x=x2,
         name='Female',
         orientation='h', 
-        marker=dict(color='#11CCAE')
+        marker=dict(color='#117acc')
     ))
 
     # Updating Figure Layout
