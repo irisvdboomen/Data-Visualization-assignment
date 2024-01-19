@@ -169,6 +169,8 @@ def main():
     # After the option is selected, the corresponding function is called
     choose_category = st.selectbox('Choose category:', ['Gender', 'Age', 'Population pyramid'])
     if choose_category == 'Gender':
+        st.write('Here you can see the population trends for the selected neighborhoods. You can choose to look at both genders or at just one of them. If you select either Mannen or Vrouwen, you will see a scatter plot with trend lines. You can select one or multiple neighborhood(s) in the dropdown menu. Hover over the graph to see the exact values.') 
+        st.caption('The data was collected from: https://eindhoven.incijfers.nl/jive.')
         choose_gender = st.selectbox('Choose gender:', ['All', 'Mannen', 'Vrouwen'])
         if choose_gender == 'All':
             select_and_plot_all_genders(df_gender_age)
@@ -177,6 +179,8 @@ def main():
         elif choose_gender == 'Vrouwen':
             select_and_plot(df_gender_age, 'Vrouwen', 'Vrouwen trends')
     elif choose_category == 'Age':
+        st.write('Here you can see the population distribution for the selected neighborhoods. You can choose to look at all age groups or at one of them. If you select one of the age groups, you will see a pie chart with the population distribution for that age group. You can select one or multiple neighborhood(s) in the dropdown menu. Hover over the graph to see the exact values.')
+        st.caption('The data was collected from: https://eindhoven.incijfers.nl/jive.')
         age_groups = ['All', 'Totaal 0-9 jaar', 'Totaal 10-19 jaar', 'Totaal 20-29 jaar', 'Totaal 30-39 jaar', 'Totaal 40-49 jaar', 'Totaal 50-59 jaar', 'Totaal 60-69 jaar', 'Totaal 70-79 jaar', 'Totaal 80-89 jaar', 'Totaal 90 jaar en ouder']
         choose_age_group = st.selectbox('Choose age group:', age_groups)
         if choose_age_group == 'All':
